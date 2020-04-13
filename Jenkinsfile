@@ -30,12 +30,21 @@ pipeline {
             steps {
                 script {
                     sh "docker login -u cssp007143 -p Pandey@2020"
-					          sh "docker push cssp007143/nginx-image"
+		    sh "docker push cssp007143/nginx-image"
                 }
             }
         }
         
-      
+         stage('Deploy Application in K8s Cluster') {
+            steps {
+                script {
+                   kubernetesDeploy(
+				      configs: 'nginx.yaml',
+				      kubeconfigId: 'KUBERNETES_CONFIG'
+				   ) 
+                }
+            }
+        }
       
   }
   }
