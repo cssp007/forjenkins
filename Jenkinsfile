@@ -12,7 +12,7 @@ pipeline {
         stage('Getting Code from SCM') {
             steps {
                 script {
-                   git credentialsId: 'Git_Pass', url: '${github_URL}' 
+                   git credentialsId: 'Git_Pass', url: 'https://github.com/cssp007/forjenkins.git' 
                 }
             }
          }
