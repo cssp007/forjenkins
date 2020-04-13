@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment { 
-        github_URL = 'https://github.com/cssp007/forjenkins'
+        github_URL = 'https://github.com/cssp007/forjenkins.git'
     }
     
     
