@@ -26,8 +26,9 @@ kind: Service
 metadata:
   name: simpleservice
 spec:
+  type: NodePort
   ports:
     - port: 80
-      targetPort: 9876
+      targetPort: 32322
   selector:
-    app: nginx
+    name: nginx
