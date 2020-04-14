@@ -1,6 +1,6 @@
 ---
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
    labels:
       run: nginx
@@ -18,6 +18,8 @@ spec:
         containers:
           - image: cssp007143/nginx-image
             name:  nginx
+            ports:
+              - containerPort: 80
             
 ---
 
