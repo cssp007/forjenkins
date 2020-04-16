@@ -3,7 +3,7 @@ pipeline {
     
     environment { 
         github_URL = 'https://github.com/cssp007/forjenkins.git'
-	build_number = ${currentBuild.number}
+	build_number = "${currentBuild.number}"
     }
     
     
