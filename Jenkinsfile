@@ -3,6 +3,7 @@ pipeline {
     
     environment { 
         github_URL = 'https://github.com/cssp007/forjenkins.git'
+	build_number = ${currentBuild.number}
     }
     
     
@@ -21,7 +22,7 @@ pipeline {
         stage('Creating Docker images') {
             steps {
                 script {
-                    sh "docker build -t cssp007143/nginx-image ."
+			sh "docker build -t cssp007143/nginx-image:${build_number} ."
                 }
             }
         }
@@ -30,7 +31,7 @@ pipeline {
             steps {
                 script {
                     sh "docker login -u cssp007143 -p Pandey@2020"
-		    sh "docker push cssp007143/nginx-image"
+		    sh "docker push cssp007143/nginx-image:${build_number}"
                 }
             }
         }
