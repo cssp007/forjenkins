@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment { 
-        github_URL = 'https://github.com/cssp007/forjenkins.git'
+        github_URL = "https://github.com/cssp007/forjenkins.git"
 	build_number = "${currentBuild.number}"
     }
     
@@ -13,7 +13,7 @@ pipeline {
         stage('Getting Code from SCM') {
             steps {
                 script {
-                   git credentialsId: 'Git_Pass', url: 'https://github.com/cssp007/forjenkins.git' 
+			git credentialsId: 'Git_Pass', url: "${github_URL}" 
                 }
             }
          }
@@ -30,8 +30,10 @@ pipeline {
 		stage('Push to Docker Hub') {
             steps {
                 script {
-                    sh "docker login -u cssp007143 -p Pandey@2020"
-		    sh "docker push cssp007143/nginx-image:${build_number}"
+		    withCredentials([string(credentialsId: 'Ducker_Hub_Pass', variable: 'Docker_Hub_Pass')]) {
+			    sh "docker login -u cssp007143 -p ${Docker_Hub_Pass}"
+                       }
+                        sh "docker push cssp007143/nginx-image:${build_number}"
                 }
             }
         }
