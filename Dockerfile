@@ -2,7 +2,7 @@ FROM nginx:latest
 
 ADD index.html /usr/share/nginx/html/
 
-Add static /usr/share/nginx/html/
+ADD static /usr/share/nginx/html/
 
 RUN chmod +r /usr/share/nginx/html/index.html
 
