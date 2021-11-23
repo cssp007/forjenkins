@@ -16,7 +16,7 @@ spec:
           run: nginx
      spec:
         containers:
-          - image: cssp007143/nginx-image:${build_number}
+          - image: harbor.cssp.tech/production/nginx-image:${build_number}
             name:  nginx
             ports:
               - containerPort: 80
