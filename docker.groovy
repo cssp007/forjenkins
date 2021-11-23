@@ -2,7 +2,7 @@ def createImage() {
     sh "docker build -t harbor.cssp.tech/production/nginx-image:${build_number} ."
     }
  def pushToDockerHub() {
-    withCredentials([string(credentialsId: 'Ducker_Hub_Pass', variable: 'Docker_Hub_Pass')]) {
+    withCredentials([string(credentialsId: 'Docker_Hub_Pass', variable: 'Docker_Hub_Pass')]) {
 			    sh "docker login -u production -p ${Docker_Hub_Pass}"
          }
           sh "docker push harbor.cssp.tech/production/nginx-image:${build_number}"
