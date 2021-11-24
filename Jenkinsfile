@@ -29,6 +29,22 @@ pipeline {
                 }
             }
         }
+	   
+        stage('Delete secret') {
+            steps {
+                script {
+                   sh "kubectl delete secret regcred"
+                }
+            }
+        }
+	    
+         stage('Delete Deploy Application in K8s Cluster') {
+            steps {
+                script {
+                   sh "kubectl delete -f nginx.yaml" 
+                }
+            }
+        }
 	    
         stage('Create secret') {
             steps {
@@ -39,7 +55,7 @@ pipeline {
         }
 	
         
-         stage('Deploy Application in K8s Cluster') {
+         stage('Create Deploy Application in K8s Cluster') {
             steps {
                 script {
                    sh "kubectl apply -f nginx.yaml" 
