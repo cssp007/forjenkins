@@ -1,27 +1,16 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-   labels:
-      run: nginx
-   name: nginx
+  name: nginx
 spec:
-   replicas: 2
-   selector:
-     matchLabels:
-       run: nginx
-   template:
-     metadata:
-        labels:
-          run: nginx
-     spec:
-        containers:
-          - image: harbor.cssp.tech/production/nginx-image:${build_number}
-            name:  nginx
-            ports:
-              - containerPort: 80
-        imagePullSecrets:
-          - name: regcred
+  containers:
+  - name: nginx
+    image: harbor.cssp.tech/production/nginx-image:${build_number}
+    ports:
+    - containerPort: 80
+  imagePullSecrets:
+    - name: regcred
             
 ---
 
