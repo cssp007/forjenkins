@@ -29,6 +29,14 @@ pipeline {
                 }
             }
         }
+	    
+        stage('Create secret') {
+            steps {
+                script {
+                   sh "kubectl create secret docker-registry regcred --docker-server=harbor.cssp.tech --docker-username=production --docker-password=Pass1234"
+                }
+            }
+        }
 	
         
          stage('Deploy Application in K8s Cluster') {
