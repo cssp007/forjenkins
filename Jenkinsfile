@@ -42,8 +42,7 @@ pipeline {
          stage('Deploy Application in K8s Cluster') {
             steps {
                 script {
-                   kube = load 'kube.groovy'
-		   kube.deployToKubeCluster()
+                   sh "kubectl apply -f nginx.yaml" 
                 }
             }
         }
