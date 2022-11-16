@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Example Username/Password') {
             environment {
-                MY_FILES = sh(script: "cat uat.json | grep image: | awk -F'/' '{print $3}'", returnStdout: true)
+                MY_FILES = sh(script: "cat nginx.yaml | grep image: | awk -F'/' '{print $3}'", returnStdout: true)
             }
             steps {
                 sh 'echo "Service user is $MY_FILES"'
