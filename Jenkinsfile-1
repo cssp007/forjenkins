@@ -6,7 +6,7 @@ pipeline {
                 MY_IMAGE_NAME = sh(script: "cat nginx.yaml | grep image: | awk -F'/' '{print \$3}'", returnStdout: true)
             }
             environment {
-                MY_IMAGE_NAME_PORT = sh(script: "cat nginx.yaml | grep containerPort | awk -F':' '{print $2}'", returnStdout: true)
+                MY_IMAGE_NAME_PORT = sh(script: "cat nginx.yaml | grep containerPort | awk -F':' '{print \$2}'", returnStdout: true)
             }
             steps {
                 sh 'echo "Service user is $MY_IMAGE_NAME"'
