@@ -1,3 +1,10 @@
+node() {
+  emailext mimeType: 'text/html',
+                 subject: "[Jenkins]${currentBuild.fullDisplayName}",
+                 to: "somnath.p@optit.in",
+                 body: '''<a href="${BUILD_URL}input">click to approve</a>'''
+}
+
 pipeline {
     agent any
     stages {
