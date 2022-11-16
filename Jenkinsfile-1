@@ -22,5 +22,16 @@ pipeline {
         '''
       }
     }
+    stage('hostname') {
+      agent any
+      steps {
+        environment {
+          MY_FILES = sh(script: 'hostname', returnStdout: true)
+        }
+        sh '''
+          echo $MY_FILES
+        '''
+      }
+    }
   }
 }
